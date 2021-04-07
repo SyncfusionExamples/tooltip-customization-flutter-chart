@@ -21,7 +21,7 @@ class ChartApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   // ignore: prefer_const_constructors_in_immutables
-  MyHomePage({Key key}) : super(key: key);
+  MyHomePage({Key? key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -53,12 +53,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 if (args.pointIndex == 2) {
                   //Tooltip with X and Y positions of data points
                   args.header = 'x : y';
-                  args.text = '${args.locationX.floor()} : ${args.locationY.floor()}';
+                  args.text = '${args.locationX!.floor()} : ${args.locationY!.floor()}';
                 }
                 if(args.pointIndex == 3) {
                   //Tooltip with formatted DateTime values
-                  List<CartesianChartPoint<dynamic>> chartdata = args.dataPoints;
-                  args.header = DateFormat('d MMM yyyy').format(chartdata[3].x);
+                  List<dynamic>? chartdata = args.dataPoints;
+                  args.header = DateFormat('d MMM yyyy').format(chartdata![3].x);
                   args.text = '${chartdata[3].y}';
                 }
               },
