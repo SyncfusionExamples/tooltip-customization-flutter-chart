@@ -26,7 +26,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  TooltipBehavior _tooltipBehavior;
+  late TooltipBehavior _tooltipBehavior;
 
   @override
   void initState() {
@@ -45,29 +45,31 @@ class _MyHomePageState extends State<MyHomePage> {
             height: 500,
             width: 320,
             child: SfCartesianChart(
-              backgroundColor: Colors.white,
-              plotAreaBackgroundColor: Colors.white,
-              onTooltipRender: (TooltipArgs args) {
-                if (args.pointIndex == 0) {
-                  //Tooltip without header
-                  args.header = '';
-                }
-                if (args.pointIndex == 1) {
-                  //Tooltip with customized header
-                  args.header = 'Sold';
-                }
-                if (args.pointIndex == 2) {
-                  //Tooltip with X and Y positions of data points
-                  args.header = 'x : y';
-                  args.text = '${args.locationX!.floor()} : ${args.locationY!.floor()}';
-                }
-                if(args.pointIndex == 3) {
-                  //Tooltip with formatted DateTime values
-                  List<dynamic>? chartdata = args.dataPoints;
-                  args.header = DateFormat('d MMM yyyy').format(chartdata![3].x);
-                  args.text = '${chartdata[3].y}';
-                }
-              },
+                backgroundColor: Colors.white,
+                plotAreaBackgroundColor: Colors.white,
+                onTooltipRender: (TooltipArgs args) {
+                  if (args.pointIndex == 0) {
+                    //Tooltip without header
+                    args.header = '';
+                  }
+                  if (args.pointIndex == 1) {
+                    //Tooltip with customized header
+                    args.header = 'Sold';
+                  }
+                  if (args.pointIndex == 2) {
+                    //Tooltip with X and Y positions of data points
+                    args.header = 'x : y';
+                    args.text =
+                        '${args.locationX!.floor()} : ${args.locationY!.floor()}';
+                  }
+                  if (args.pointIndex == 3) {
+                    //Tooltip with formatted DateTime values
+                    List<dynamic>? chartdata = args.dataPoints;
+                    args.header =
+                        DateFormat('d MMM yyyy').format(chartdata![3].x);
+                    args.text = '${chartdata[3].y}';
+                  }
+                },
                 primaryXAxis: DateTimeAxis(
                     interval: 30, intervalType: DateTimeIntervalType.days),
                 // Enable tooltip
