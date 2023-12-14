@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     interval: 30, intervalType: DateTimeIntervalType.days),
                 // Enable tooltip
                 tooltipBehavior: _tooltipBehavior,
-                series: <ChartSeries<SalesData, DateTime>>[
+                series: <LineSeries<SalesData, DateTime>>[
                   LineSeries<SalesData, DateTime>(
                     enableTooltip: true,
                     dataSource: <SalesData>[
